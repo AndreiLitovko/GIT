@@ -23,24 +23,24 @@ const PagePagination = ({
       <PaginationContent>
 
         {page === firstNumber || (
-          <PaginationItem onClick={decreasePageValue}>
-            <PaginationPrevious href="#" />
+          <PaginationItem>
+            <PaginationPrevious onClick={decreasePageValue} />
           </PaginationItem>
         )}
         {numbers.map((num) => (
-          <PaginationItem key={num} onClick={() => handleSetPage(num)}>
+          <PaginationItem key={num}>
             {num === page ? (
-              <PaginationLink href="#" isActive>
+              <PaginationLink onClick={() => handleSetPage(num)} isActive>
                 {num}
               </PaginationLink>
             ) : (
-              <PaginationLink href="#">{num}</PaginationLink>
+              <PaginationLink onClick={() => handleSetPage(num)}>{num}</PaginationLink>
             )}
           </PaginationItem>
         ))}
         {page === lastNumber || (
-          <PaginationItem onClick={increasePageValue}>
-            <PaginationNext href="#" />
+          <PaginationItem>
+            <PaginationNext onClick={increasePageValue} />
           </PaginationItem>
         )}
       </PaginationContent>

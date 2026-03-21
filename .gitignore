@@ -1,0 +1,17 @@
+# Global
+.vscode/
+
+# Python
+.venv/
+**/__pycache__/
+*.pyc
+
+# Backend artifacts
+Backend/db.sqlite3
+Backend/media/
+Backend/static/
+
+# Frontend artifacts
+Frontend/node_modules/
+Frontend/dist/
+Frontend/dist-ssr/
