@@ -45,13 +45,13 @@ const LoginPage = ({setIsAuthenticated, setUsername}) => {
     dark:text-white dark:bg-[#141624]"
     >
       <div className="flex flex-col gap-2 justify-center items-center mb-2">
-        <h3 className="font-semibold text-2xl">Signin Form</h3>
-        <p>Welcome back! Log in to continue.</p>
+        <h3 className="font-semibold text-2xl">Вход</h3>
+        <p>Добро пожаловать! Войдите, чтобы продолжить.</p>
       </div>
 
       <div>
         <Label htmlFor="username" className="dark:text-[97989F]">
-          Username
+          Имя пользователя
         </Label>
         <Input
           type="text"
@@ -67,7 +67,7 @@ const LoginPage = ({setIsAuthenticated, setUsername}) => {
       </div>
 
       <div>
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password">Пароль</Label>
         <Input
           type="password"
           id="password"
@@ -90,11 +90,11 @@ const LoginPage = ({setIsAuthenticated, setUsername}) => {
               <SmallSpinnerText text="Logging in..." />
             </>
           ) : (
-            <SmallSpinnerText text="Signin" />
+            <SmallSpinnerText text="Войти" />
           )}
         </button>
-        <p className="text-[14px]">
-          Don't have an account? <Link to="/signup">signup</Link>
+        <p className="text-[14px] mt-4">
+          У вас нет аккаунта? <Link to="/signup">Зарегистрируйтесь.</Link>
         </p>
       </div>
     </form>

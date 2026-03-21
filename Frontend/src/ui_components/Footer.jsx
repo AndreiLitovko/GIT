@@ -15,35 +15,35 @@ const Footer = () => {
         </h1>
 
         <p className="text-[14px] text-[#696A75] leading-[1.5]  max-md:text-center dark:text-[#97989F]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam
+          Платформа для публикации постов на различные темы.
+ Делитесь своими идеями, опытом и знаниями, находите интересные материалы,
+ открывайте для себя новые взгляды и истории от других авторов.
         </p>
       </div>
 
       <div className="text-[#181A2A] text-[14px] flex flex-col gap-4 px-4 max-md:items-center">
         <p className=" font-semibold text-[16px] dark:text-white">
-          Quick Links
+          Навигация
         </p>
         <ul className="flex flex-col gap-4  text-[#3B3C4A] max-md:items-center dark:text-[#97989F]">
-          <li>Home</li>
-          <li>About</li>
-          <li>Blog</li>
-          <li>Archived</li>
-          <li>Author</li>
-          <li>Contact</li>
+          <li>Главная</li>
+          <li>О нас</li>
+          <li>Блог</li>
+          <li>Архив</li>
+          <li>Авторы</li>
+          <li>Контакты</li>
         </ul>
       </div>
 
       <div className="text-[#181A2A] text-[14px] flex flex-col gap-4 px-4 max-md:items-center">
-        <p className=" font-semibold text-[16px] dark:text-white">Category</p>
+        <p className=" font-semibold text-[16px] dark:text-white">Категории</p>
         <ul className="flex flex-col gap-4  text-[#3B3C4A] max-md:items-center dark:text-[#97989F]">
-          <li>Lifestyle</li>
-          <li>Technology</li>
-          <li>Travel</li>
-          <li>Business</li>
-          <li>Economy</li>
-          <li>Sports</li>
+          <li>Образ жизни</li>
+          <li>Технологии</li>
+          <li>Путешествия</li>
+          <li>Бизнес</li>
+          <li>Экономика</li>
+          <li>Спорт</li>
         </ul>
       </div>
 

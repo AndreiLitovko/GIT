@@ -7,7 +7,7 @@ import { useQuery, keepPreviousData } from "@tanstack/react-query";
 
 const HomePage = () => {
   const [page, setPage] = useState(1);
-  const numOfBlogsPerPage = 3;
+  const numOfBlogsPerPage = 9;
 
   const { isPending, isError, error, data } = useQuery({
     queryKey: ["blogs", page],

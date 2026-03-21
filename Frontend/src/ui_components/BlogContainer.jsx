@@ -1,7 +1,7 @@
 import BlogCard from "./BlogCard"
 import Spinner from "./Spinner"
 
-const BlogContainer = ({isPending, blogs=[], title="🍔Latest Posts"}) => {
+const BlogContainer = ({isPending, blogs=[], title="🍔Последние публикации"}) => {
 
   if(isPending){
     return <Spinner />

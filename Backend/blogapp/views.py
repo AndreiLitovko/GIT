@@ -10,7 +10,7 @@ from rest_framework.pagination import PageNumberPagination
 
 
 class BlogListPagination(PageNumberPagination):
-    page_size= 3
+    page_size = 9
 
 
 # Create your views here.

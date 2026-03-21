@@ -34,10 +34,10 @@ const NavBar = ({
                   to={`/profile/${username}`}
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
-                  Hi, {username}
+                  Привет, {username}
                 </NavLink></li>
               <li onClick={logout} className="cursor-pointer">
-                Logout
+                Выход
               </li>
             </>
           ) : (
@@ -47,7 +47,7 @@ const NavBar = ({
                   to="/signin"
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
-                  Login
+                  Вход
                 </NavLink>
               </li>
 
@@ -56,7 +56,7 @@ const NavBar = ({
                   to="/signup"
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
-                  Register
+                  Регистрация
                 </NavLink>
               </li>
             </>
@@ -67,7 +67,7 @@ const NavBar = ({
               to="/create"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              Create Post
+              Создать пост
             </NavLink>
           </li>
         </ul>

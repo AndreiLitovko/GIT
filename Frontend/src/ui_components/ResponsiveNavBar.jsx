@@ -8,8 +8,8 @@ const ResponsiveNavBar = ({isAuthenticated, username, logout}) => {
    
     {isAuthenticated ? (
             <>
-              <li>Hi, {username}</li>
-              <li onClick={logout} className="cursor-pointer">Logout</li>
+              <li>Привет, {username}</li>
+              <li onClick={logout} className="cursor-pointer">Выход</li>
             </>
           ) : (
             <>
@@ -38,7 +38,7 @@ const ResponsiveNavBar = ({isAuthenticated, username, logout}) => {
               to="/create"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              Create Post
+              Создать пост
             </NavLink>
           </li>
 
