@@ -82,23 +82,23 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
     >
       <div className="flex flex-col gap-2 justify-center items-center mb-2">
         <h3 className="font-semibold text-2xl">
-          {updateForm ? "Update Profile Form" : "SignUp Form"}
+          {updateForm ? "Форма обновления профиля" : "Регистрация"}
         </h3>
         <p>
           {updateForm
-            ? "You can tell us more about you."
-            : "Create your account to get started!"}
+            ? "Вы можете рассказать о себе больше."
+            : "Создайте аккаунт, чтобы начать!"}
         </p>
       </div>
 
       <div>
         <Label htmlFor="username" className="dark:text-[97989F]">
-          Username
+          Логин
         </Label>
         <Input
           type="text"
           id="username"
-          placeholder="Enter username"
+          placeholder="Введите логин"
           {...register("username", {
             required: "Username is required",
             minLength: {
@@ -114,11 +114,11 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
       </div>
 
       <div>
-        <Label htmlFor="first_name">First Name</Label>
+        <Label htmlFor="first_name">Имя</Label>
         <Input
           type="text"
           id="first_name"
-          placeholder="Enter first name"
+          placeholder="Введите имя"
           {...register("first_name", {
             required: "Firstname is required",
             minLength: {
@@ -134,11 +134,11 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
       </div>
 
       <div>
-        <Label htmlFor="last_name">Last Name</Label>
+        <Label htmlFor="last_name">Фамилия</Label>
         <Input
           type="text"
           id="last_name"
-          placeholder="Enter last name"
+          placeholder="Введите фамилию"
           {...register("last_name", {
             required: "Lastname is required",
             minLength: {
@@ -155,12 +155,12 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
 
         {updateForm && <div>
         <Label htmlFor="job_title" className="dark:text-[97989F]">
-          Job Title
+          Должность
         </Label>
         <Input
           type="text"
           id="job_title"
-          placeholder="Enter Job Title"
+          placeholder="Введите должность"
           {...register("job_title", {
             required: "Your job title is required",
             minLength: {
@@ -177,10 +177,10 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
 
 
       {updateForm && <div>
-        <Label htmlFor="content">Bio</Label>
+        <Label htmlFor="content">О себе</Label>
         <Textarea
           id="content"
-          placeholder="Tell us more about you"
+          placeholder="Расскажите о себе"
           {...register("bio", {
             required: "Your bio is required",
             minLength: {
@@ -196,7 +196,7 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
       </div>}
 
       {updateForm && <div className="w-full">
-        <Label htmlFor="profile_picture">Profile Picture</Label>
+        <Label htmlFor="profile_picture">Фото профиля</Label>
         <Input
           type="file"
           id="picture"
@@ -213,11 +213,11 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
 
 
       {updateForm || <div>
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password">Пароль</Label>
         <Input
           type="password"
           id="password"
-          placeholder="Enter password"
+          placeholder="Введите пароль"
           {...register("password", {
             required: "Password is required",
             minLength: {
@@ -233,11 +233,11 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
       </div>}
 
      {updateForm ||  <div>
-        <Label htmlFor="confirmPassword">Confirm Password</Label>
+        <Label htmlFor="confirmPassword">Подтвердите пароль</Label>
         <Input
           type="password"
           id="confirmPassword"
-          placeholder="Confirm password"
+          placeholder="Введите пароль повторно"
           {...register("confirmPassword", {
             required: "Password is required",
             minLength: {
@@ -259,10 +259,10 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
             {updateProfileMutation.isPending ? (
               <>
                 <SmallSpinner />
-                <SmallSpinnerText text="Updating user..." />
+                <SmallSpinnerText text="Обновление профиля..." />
               </>
             ) : (
-              <SmallSpinnerText text="Update user profile" />
+              <SmallSpinnerText text="Обновить профиль" />
             )}
           </button>
         ) : (
@@ -270,15 +270,15 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
             {mutation.isPending ? (
               <>
                 <SmallSpinner />
-                <SmallSpinnerText text="Creating user..." />
+                <SmallSpinnerText text="Создание пользователя..." />
               </>
             ) : (
-              <SmallSpinnerText text="Signup" />
+              <SmallSpinnerText text="Зарегистрироваться" />
             )}
           </button>
         )}
-       {updateForm || <p className="text-[14px]">
-          Already have an account? <Link to="/signin">Sign In</Link>
+       {updateForm || <p className="text-[14px] mt-4">
+          Уже есть аккаунт? <Link to="/signin">Войти</Link>
         </p>}
       </div>
     </form>

@@ -84,19 +84,19 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
     >
       <div className="flex flex-col gap-2 justify-center items-center mb-2">
         <h3 className="font-semibold text-2xl max-sm:text-xl">
-          {blog ? "Update Post" : "Create Post"}
+          {blog ? "Обновить пост" : "Создать пост"}
         </h3>
 
         <p className="max-sm:text-[14px]">
           {blog
-            ? "Do you want to update your post?"
-            : "Create a new post and share your ideas."}
+            ? "Хотите обновить свой пост?"
+            : "Создайте новый пост и поделитесь идеями."}
         </p>
       </div>
 
       <div>
         <Label htmlFor="title" className="dark:text-[97989F]">
-          Title
+          Заголовок
         </Label>
         <Input
           type="text"
@@ -108,7 +108,7 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
               message: "The title must be at least 3 characters",
             },
           })}
-          placeholder="Give your post a title"
+          placeholder="Введите наименование"
           className="border-2 border-[#141624] dark:border-[#3B3C4A] focus:outline-0 h-[40px] w-[400px] max-sm:w-[300px] max-sm:text-[14px]"
         />
 
@@ -116,10 +116,10 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
       </div>
 
       <div>
-        <Label htmlFor="content">Content</Label>
+        <Label htmlFor="content">Содержание</Label>
         <Textarea
           id="content"
-          placeholder="Write your blog post"
+          placeholder="Напишите текст"
           {...register("content", {
             required: "Blog's content is required",
             minLength: {
@@ -135,7 +135,7 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
       </div>
 
       <div className="w-full">
-        <Label htmlFor="category">Category</Label>
+        <Label htmlFor="category">Категория</Label>
 
         <Select
           {...register("category", { required: "Blog's category is required" })}
@@ -143,11 +143,11 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
           defaultValue={blog ? blog.category : ""}
         >
           <SelectTrigger className="border-2 border-[#141624] dark:border-[#3B3C4A] focus:outline-0 h-[40px] w-full max-sm:w-[300px] max-sm:text-[14px]">
-            <SelectValue placeholder="Select a category" />
+            <SelectValue placeholder="Выберите категорию" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>Categories</SelectLabel>
+              <SelectLabel>Категории</SelectLabel>
               <SelectItem value="Frontend">Frontend</SelectItem>
               <SelectItem value="Backend">Backend</SelectItem>
               <SelectItem value="Fullstack">Fullstack</SelectItem>
@@ -163,7 +163,7 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
       </div>
 
       <div className="w-full">
-        <Label htmlFor="featured_image">Featured Image</Label>
+        <Label htmlFor="featured_image">Изображение</Label>
         <Input
           type="file"
           id="picture"
@@ -187,10 +187,10 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
             {updateMutation.isPending ? (
               <>
                 {" "}
-                <SmallSpinner /> <SmallSpinnerText text="Updating post..." />{" "}
+                <SmallSpinner /> <SmallSpinnerText text="Обновление..." />{" "}
               </>
             ) : (
-              <SmallSpinnerText text="Update post" />
+              <SmallSpinnerText text="Обновить пост" />
             )}
           </button>
         ) : (
@@ -201,10 +201,10 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
             {mutation.isPending ? (
               <>
                 {" "}
-                <SmallSpinner /> <SmallSpinnerText text="Creating post..." />{" "}
+                <SmallSpinner /> <SmallSpinnerText text="Создание..." />{" "}
               </>
             ) : (
-              <SmallSpinnerText text="Create post" />
+              <SmallSpinnerText text="Опубликовать" />
             )}
           </button>
         )}

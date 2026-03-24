@@ -32,7 +32,7 @@ const ProfilePage = ({ authUsername }) => {
   return (
     <>
       <Hero userInfo={data} authUsername={authUsername} toggleModal={toggleModal} />
-      <BlogContainer blogs={blogs} title={`🍔 ${username}'s Posts`} />
+      <BlogContainer blogs={blogs} title={`🍔 Посты ${username}`} />
 
       {showModal && (
         <Modal toggleModal={toggleModal}>

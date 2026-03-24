@@ -57,7 +57,7 @@ const LoginPage = ({setIsAuthenticated, setUsername}) => {
           type="text"
           id="username"
           disabled={mutation.isPending}
-          placeholder="Enter username"
+          placeholder="Введите имя"
           {...register("username", { required: "Username is required" })}
           className="border-2 border-[#141624] dark:border-[#3B3C4A] focus:outline-0 h-[40px] w-[300px]"
         />
@@ -72,7 +72,7 @@ const LoginPage = ({setIsAuthenticated, setUsername}) => {
           type="password"
           id="password"
           disabled={mutation.isPending}
-          placeholder="Enter password"
+          placeholder="Введите пароль"
           {...register("password", { required: "Password is required" })}
           className="border-2 border-[#141624] dark:border-[#3B3C4A] focus:outline-0 h-[40px]  w-[300px]"
         />

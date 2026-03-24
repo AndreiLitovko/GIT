@@ -12,15 +12,16 @@ const Pagination = ({
     role="navigation"
     aria-label="pagination"
     className={cn("mx-auto flex w-full justify-center", className)}
-    {...props} />
+    {...props}
+  />
 )
-Pagination.displayName = "Pagination"
 
 const PaginationContent = React.forwardRef(({ className, ...props }, ref) => (
   <ul
     ref={ref}
     className={cn("flex flex-row items-center gap-1", className)}
-    {...props} />
+    {...props}
+  />
 ))
 PaginationContent.displayName = "PaginationContent"
 
@@ -42,7 +43,8 @@ const PaginationLink = ({
       variant: isActive ? "outline" : "ghost",
       size,
     }), className)}
-    {...props} />
+    {...props}
+  />
 )
 PaginationLink.displayName = "PaginationLink"
 
@@ -56,7 +58,7 @@ const PaginationPrevious = ({
     className={cn("gap-1 pl-2.5", className)}
     {...props}>
     <ChevronLeft className="h-4 w-4" />
-    <span>Previous</span>
+    <span>Назад</span>
   </PaginationLink>
 )
 PaginationPrevious.displayName = "PaginationPrevious"
@@ -70,7 +72,7 @@ const PaginationNext = ({
     size="default"
     className={cn("gap-1 pr-2.5", className)}
     {...props}>
-    <span>Next</span>
+    <span>Далее</span>
     <ChevronRight className="h-4 w-4" />
   </PaginationLink>
 )
