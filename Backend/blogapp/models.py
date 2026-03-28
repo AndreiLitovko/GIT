@@ -35,7 +35,7 @@ class Blog(models.Model):
                 )
 
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, unique=True, blank=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, allow_unicode=True)
     content = models.TextField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, related_name="blogs", null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -53,13 +53,14 @@ class Blog(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        base_slug = slugify(self.title)
-        slug = base_slug
-        num = 1
-        while Blog.objects.filter(slug=slug).exists():
-            slug = f'{base_slug}-{num}'
-            num += 1
-        self.slug = slug
+        if not self.slug:
+            base_slug = slugify(self.title, allow_unicode=True)
+            slug = base_slug
+            num = 1
+            while Blog.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{base_slug}-{num}'
+                num += 1
+            self.slug = slug
 
 
         if not self.is_draft and self.published_date is None:

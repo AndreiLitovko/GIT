@@ -31,7 +31,10 @@ def blog_list(request):
 
 @api_view(['GET'])
 def get_blog(request, slug):
-    blog = Blog.objects.get(slug=slug)
+    try:
+        blog = Blog.objects.get(slug=slug)
+    except Blog.DoesNotExist:
+        return Response({"error": "Blog not found"}, status=status.HTTP_404_NOT_FOUND)
     serializer = BlogSerializer(blog)
     return Response(serializer.data)
 

@@ -19,6 +19,7 @@ const App = () => {
   const { data } = useQuery({
     queryKey: ["username"],
     queryFn: getUsername,
+    retry: false,
   });
 
   useEffect(

@@ -58,6 +58,11 @@ export async function createBlog(data) {
     const response = await api.post("create_blog/", data);
     return response.data;
   } catch (err) {
+    if (err.response?.data) {
+      const errors = err.response.data;
+      const firstError = Object.values(errors)[0];
+      throw new Error(Array.isArray(firstError) ? firstError[0] : firstError);
+    }
     throw new Error(err.message);
   }
 }

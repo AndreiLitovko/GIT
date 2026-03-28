@@ -21,7 +21,7 @@ import SmallSpinnerText from "@/ui_components/SmallSpinnerText";
 import LoginPage from "./LoginPage";
 
 const CreatePostPage = ({ blog, isAuthenticated }) => {
-  const { register, handleSubmit, formState, setValue } = useForm({
+  const { register, handleSubmit, formState, setValue, setError, clearErrors } = useForm({
     defaultValues: blog ? blog : {},
   });
   const { errors } = formState;
@@ -51,9 +51,17 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
       queryClient.invalidateQueries({ queryKey: ["blogs"] });
       navigate("/");
     },
+    onError: (err) => {
+      toast.error(err.message);
+      console.log("Error creating blog", err);
+    },
   });
 
   function onSubmit(data) {
+    if (!data.category) {
+      setError("category", { message: "Blog's category is required" });
+      return;
+    }
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("content", data.content);
@@ -138,20 +146,22 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
         <Label htmlFor="category">Категория</Label>
 
         <Select
-          {...register("category", { required: "Blog's category is required" })}
-          onValueChange={(value) => setValue("category", value)}
+          onValueChange={(value) => {
+            setValue("category", value);
+            clearErrors("category");
+          }}
           defaultValue={blog ? blog.category : ""}
         >
           <SelectTrigger className="border-2 border-[#141624] dark:border-[#3B3C4A] focus:outline-0 h-[40px] w-full max-sm:w-[300px] max-sm:text-[14px]">
             <SelectValue placeholder="Выберите категорию" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent position="popper" sideOffset={4} avoidCollisions={false}>
             <SelectGroup>
               <SelectLabel>Категории</SelectLabel>
               <SelectItem value="Frontend">Frontend</SelectItem>
               <SelectItem value="Backend">Backend</SelectItem>
               <SelectItem value="Fullstack">Fullstack</SelectItem>
-              <SelectItem value="Web3">Web3</SelectItem>
+              <SelectItem value="Blockchain">Blockchain</SelectItem>
               <SelectItem value="Design">Design</SelectItem>
             </SelectGroup>
           </SelectContent>

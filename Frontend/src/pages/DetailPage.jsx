@@ -9,6 +9,7 @@ import { HiPencilAlt } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
 import Modal from "@/ui_components/Modal";
 import CreatePostPage from "./CreatePostPage";
+import NotFoundPage from "./NotFoundPage";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -65,6 +66,10 @@ const DetailPage = ({ username, isAuthenticated }) => {
     return <Spinner />;
   }
 
+  if (isError || !blog) {
+    return <NotFoundPage />;
+  }
+
   return (
     <>
       <div className="padding-dx max-container py-9">
@@ -92,7 +97,7 @@ const DetailPage = ({ username, isAuthenticated }) => {
             src={`${BASE_URL}${blog.featured_image}`}
           />
         </div>
-        <p className="text-[16px] leading-[2rem] text-justify text-[#3B3C4A] dark:text-[#BABABF]">
+        <p className="text-[16px] leading-[2rem] text-justify text-[#3B3C4A] dark:text-[#BABABF] whitespace-pre-line">
           {blog.content}
         </p>
       </div>
