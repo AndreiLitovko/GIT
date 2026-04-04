@@ -19,6 +19,7 @@ const HomePage = () => {
 
   const blogs = data?.results || [];
   const numOfPages = Math.max(1, Math.ceil((data?.count || 0) / numOfBlogsPerPage));
+  const isSinglePostOnLastPage = page === numOfPages && blogs.length === 1;
 
   function setPageInUrl(nextPage) {
     const normalizedPage = Math.max(1, Math.min(nextPage, numOfPages));
@@ -44,6 +45,7 @@ const HomePage = () => {
         isPending={isPending}
         blogs={blogs}
         sectionId="latest-publications"
+        addExtraBottomSpace={isSinglePostOnLastPage}
       />
       <PagePagination
         increasePageValue={increasePageValue}
