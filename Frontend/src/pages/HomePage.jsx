@@ -40,7 +40,11 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <BlogContainer isPending={isPending} blogs={blogs} />
+      <BlogContainer
+        isPending={isPending}
+        blogs={blogs}
+        sectionId="latest-publications"
+      />
       <PagePagination
         increasePageValue={increasePageValue}
         decreasePageValue={decreasePageValue}

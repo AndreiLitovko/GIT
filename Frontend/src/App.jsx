@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { getUsername } from "./services/apiBlog";
 import { useQuery } from "@tanstack/react-query";
 import NotFoundPage from "./pages/NotFoundPage";
+import ScrollOnNavigation from "./ui_components/ScrollOnNavigation";
 
 const App = () => {
   const [username, setUsername] = useState(null);
@@ -34,6 +35,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <ScrollOnNavigation />
       <Routes>
         <Route
           path="/"
