@@ -24,7 +24,7 @@ const AppLayout = ({ isAuthenticated, username, setIsAuthenticated, setUsername 
 
   return (
     <div className={darkMode ? "dark" : ""}>
-      <main className="w-full bg-[#ffffff] dark:bg-[#181A2A]">
+      <main className="w-full min-h-screen bg-[#ffffff] dark:bg-[#181A2A]">
         <NavBar
           darkMode={darkMode}
           handleDarkMode={handleDarkMode}

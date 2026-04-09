@@ -47,7 +47,7 @@ const Footer = () => {
         </ul>
       </div>
 
-      <div className="bg-white w-[350px] px-6 flex flex-col items-center justify-center gap-2  rounded-lg dark:bg-[#242535] py-6">
+      <div className="bg-white w-full max-w-[350px] px-6 flex flex-col items-center justify-center gap-2 rounded-lg dark:bg-[#242535] py-6">
         <h3 className="font-semibold text-xl  dark:text-white">
           Weekly Newsletter
         </h3>
