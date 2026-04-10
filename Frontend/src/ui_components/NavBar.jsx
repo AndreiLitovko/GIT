@@ -34,7 +34,7 @@ const NavBar = ({
                   to={`/profile/${username}`}
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
-                  Привет, {username}
+                  Привет, {username}!
                 </NavLink></li>
               <li onClick={logout} className="cursor-pointer">
                 Выход
