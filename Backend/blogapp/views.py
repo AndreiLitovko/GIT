@@ -17,6 +17,11 @@ class BlogListPagination(PageNumberPagination):
 @api_view(["GET"])
 def blog_list(request):
     blogs = Blog.objects.all()
+    category = request.query_params.get("category")
+
+    if category:
+        blogs = blogs.filter(category__iexact=category)
+
     paginator = BlogListPagination()
     paginated_blogs = paginator.paginate_queryset(blogs, request)
     serializer = BlogSerializer(paginated_blogs, many=True)

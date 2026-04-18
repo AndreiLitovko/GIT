@@ -1,9 +1,7 @@
-import { FaInstagram } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
-import { FaYoutube } from "react-icons/fa";
 import { CiMail } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
+const categories = ["Frontend", "Backend", "Fullstack", "Design", "Blockchain"];
 
 const Footer = () => {
   return (
@@ -38,41 +36,36 @@ const Footer = () => {
       <div className="text-[#181A2A] text-[14px] flex flex-col gap-4 px-4 max-md:items-center">
         <p className=" font-semibold text-[16px] dark:text-white">Категории</p>
         <ul className="flex flex-col gap-4  text-[#3B3C4A] max-md:items-center dark:text-[#97989F]">
-          <li>Образ жизни</li>
-          <li>Технологии</li>
-          <li>Путешествия</li>
-          <li>Бизнес</li>
-          <li>Экономика</li>
-          <li>Спорт</li>
+          {categories.map((category) => (
+            <li key={category}>
+              <Link to={`/?category=${encodeURIComponent(category)}&page=1`} className="hover:text-[#4B6BFB] transition-colors">
+                {category}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div className="bg-white w-full max-w-[350px] px-6 flex flex-col items-center justify-center gap-2 rounded-lg dark:bg-[#242535] py-6">
         <h3 className="font-semibold text-xl  dark:text-white">
-          Weekly Newsletter
+          Еженедельная рассылка
         </h3>
         <p className="text-[#696A75] text-[16px] mb-5 dark:text-[#97989F]">
-          Get blog articles and offers via email
+          Получайте статьи блога и предложения по электронной почте
         </p>
         <div className="w-full relative">
           <input
-            placeholder="Your Email"
+            placeholder="Ваш Email"
             className="border border-[#DCDDDF] rounded-sm h-[40px] px-3 py-3 w-full text-[14px] dark:bg-[#181A2A] "
           />
           <CiMail className="absolute top-[12px] right-[10px] text-[16px] dark:text-[#97989F]" />
         </div>
         <button className="bg-[#4B6BFB] text-[#FFFFFF] text-[16px] rounded-md w-full py-3">
-          Subscribe
+          Подписаться
         </button>
       </div>
     </div>
 
-    <div className="py-3 flex items-center gap-6 cursor-pointer max-md:mt-6 max-md:justify-center">
-      <FaInstagram className="dark:text-white text-[20px] text-[#141624]" />
-      <FaFacebookF className="dark:text-white text-[20px] text-[#141624]" />
-      <BsTwitterX className="dark:text-white text-[20px] text-[#141624]" />
-      <FaYoutube className="dark:text-white text-[20px] text-[#141624]" />
-    </div>
   </footer>
   )
 }

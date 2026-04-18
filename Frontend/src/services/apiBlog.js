@@ -1,8 +1,14 @@
 import api from "@/api";
 
-export async function getBlogs(page) {
+export async function getBlogs(page, category = "") {
   try {
-    const response = await api.get(`blog_list?page=${page}`);
+    const params = new URLSearchParams({ page: String(page) });
+
+    if (category) {
+      params.set("category", category);
+    }
+
+    const response = await api.get(`blog_list?${params.toString()}`);
     return response.data;
   } catch (err) {
     throw new Error(err.message);

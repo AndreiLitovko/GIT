@@ -8,12 +8,13 @@ import { useSearchParams } from "react-router-dom";
 const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const requestedPage = Number(searchParams.get("page") || "1");
+  const category = searchParams.get("category") || "";
   const page = Number.isFinite(requestedPage) && requestedPage > 0 ? requestedPage : 1;
   const numOfBlogsPerPage = 9;
 
   const { isPending, data } = useQuery({
-    queryKey: ["blogs", page],
-    queryFn: () => getBlogs(page),
+    queryKey: ["blogs", page, category],
+    queryFn: () => getBlogs(page, category),
     placeholderData: keepPreviousData,
   });
 
@@ -23,7 +24,13 @@ const HomePage = () => {
 
   function setPageInUrl(nextPage) {
     const normalizedPage = Math.max(1, Math.min(nextPage, numOfPages));
-    setSearchParams({ page: String(normalizedPage) });
+    const params = { page: String(normalizedPage) };
+
+    if (category) {
+      params.category = category;
+    }
+
+    setSearchParams(params);
   }
 
   function handleSetPage(val) {
@@ -41,9 +48,20 @@ const HomePage = () => {
   return (
     <>
       <Header />
+      {category && (
+        <div className="padding-x max-container pt-6 flex justify-center">
+          <button
+            onClick={() => setSearchParams({ page: "1" })}
+            className="px-4 py-2 rounded-md bg-[#4B6BFB] text-white text-sm"
+          >
+            Показать все публикации
+          </button>
+        </div>
+      )}
       <BlogContainer
         isPending={isPending}
         blogs={blogs}
+        title={category ? `Категория: ${category}` : "🍔Последние публикации"}
         sectionId="latest-publications"
         addExtraBottomSpace={isSinglePostOnLastPage}
       />

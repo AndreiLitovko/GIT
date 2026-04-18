@@ -161,8 +161,8 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
               <SelectItem value="Frontend">Frontend</SelectItem>
               <SelectItem value="Backend">Backend</SelectItem>
               <SelectItem value="Fullstack">Fullstack</SelectItem>
-              <SelectItem value="Blockchain">Blockchain</SelectItem>
               <SelectItem value="Design">Design</SelectItem>
+              <SelectItem value="Blockchain">Blockchain</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
