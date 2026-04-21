@@ -8,7 +8,7 @@ const ResponsiveNavBar = ({isAuthenticated, username, logout}) => {
    
     {isAuthenticated ? (
             <>
-              <li>Привет, {username}!</li>
+              <li>Привет, {username} !</li>
               <li onClick={logout} className="cursor-pointer">Выход</li>
             </>
           ) : (
