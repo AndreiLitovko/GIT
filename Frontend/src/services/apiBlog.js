@@ -99,6 +99,15 @@ export async function deleteBlog(id) {
   }
 }
 
+export async function getAuthors() {
+  try {
+    const response = await api.get("authors/");
+    return response.data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
 export async function getUserInfo(username) {
   try {
     const response = await api.get(`get_userinfo/${username}`);

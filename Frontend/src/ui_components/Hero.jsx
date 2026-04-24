@@ -1,8 +1,4 @@
 import pic from "../images/pic.jpg";
-import { FaInstagram } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
-import { FaYoutube } from "react-icons/fa";
 import { HiPencilAlt } from "react-icons/hi";
 import { BASE_URL } from "@/api";
 
@@ -39,21 +35,6 @@ const Hero = ({ userInfo, authUsername, toggleModal }) => {
       <p className="text-[#3B3C4A] text-[16px] max-md:leading-[2rem] lg:leading-normal lg:mx-[200px] text-center dark:text-[#BABABF]">
         {userInfo?.bio}
       </p>
-
-      <div className="flex gap-4 justify-center items-center text-white text-xl">
-        <div className="w-[40px] h-[40px] rounded-lg bg-[#696A75] flex justify-center items-center">
-          <FaInstagram />
-        </div>
-        <div className="w-[40px] h-[40px] rounded-lg bg-[#696A75] flex justify-center items-center">
-          <FaFacebookF />
-        </div>
-        <div className="w-[40px] h-[40px] rounded-lg bg-[#696A75] flex justify-center items-center">
-          <BsTwitterX />
-        </div>
-        <div className="w-[40px] h-[40px] rounded-lg bg-[#696A75] flex justify-center items-center">
-          <FaYoutube />
-        </div>
-      </div>
     </div>
   );
 };

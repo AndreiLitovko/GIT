@@ -15,6 +15,14 @@ class BlogListPagination(PageNumberPagination):
 
 # Create your views here.
 @api_view(["GET"])
+def get_authors(request):
+    User = get_user_model()
+    authors = User.objects.exclude(blogs__isnull=True).distinct()
+    serializer = UserInfoSerializer(authors, many=True)
+    return Response(serializer.data)
+
+
+@api_view(["GET"])
 def blog_list(request):
     blogs = Blog.objects.all()
     category = request.query_params.get("category")

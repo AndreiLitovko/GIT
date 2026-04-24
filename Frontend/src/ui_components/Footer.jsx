@@ -1,20 +1,46 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const categories = ["Frontend", "Backend", "Fullstack", "Design", "Blockchain"];
 
-const Footer = () => {
+const Footer = ({ isAuthenticated, username }) => {
+  const navigate = useNavigate();
+  
+  const handleHomeClick = () => {
+    navigate("/?page=1");
+    window.scrollTo(0, 0);
+  };
+
+  const handleMyBlogClick = () => {
+    if (isAuthenticated && username) {
+      navigate(`/profile/${username}`);
+    } else {
+      navigate("/signin");
+    }
+  };
+
+  const handleAuthorsClick = () => {
+    navigate("/authors");
+    window.scrollTo(0, 0);
+  };
   return (
     <footer className="bg-[#F6F6F7] padding-x py-16 max-container dark:bg-[#141624]">
     <div className="flex max-lg:gap-9 lg:gap-20 flex-wrap max-md:justify-center justify-start items-start">
       <div className="w-[300px] flex flex-col gap-6 max-md:items-center">
-        <h1 className="text-[#141624] text-2xl dark:text-[#FFFFFF] ">
+        <button
+          onClick={handleHomeClick}
+          className="text-[#141624] text-2xl dark:text-[#FFFFFF] font-bold cursor-pointer hover:text-[#4B6BFB] transition-colors bg-none border-none p-0 text-left"
+        >
           DevFolio
-        </h1>
+        </button>
 
         <p className="text-[14px] text-[#696A75] leading-[1.5] max-md:text-center dark:text-[#97989F]">
           Платформа для публикации постов на различные темы.
  Делитесь своими идеями, опытом и знаниями, находите интересные материалы,
  открывайте для себя новые взгляды и истории от других авторов.
+        </p>
+
+        <p className="text-[14px] text-[#4B6BFB] dark:text-[#4B6BFB]">
+          DevFolioBlog@gmail.com
         </p>
       </div>
 
@@ -24,11 +50,31 @@ const Footer = () => {
             Навигация
           </p>
           <ul className="flex flex-col gap-4 text-[#3B3C4A] max-md:items-center dark:text-[#97989F]">
-            <li>Главная</li>
+            <li>
+              <button 
+                onClick={handleHomeClick}
+                className="hover:text-[#4B6BFB] transition-colors cursor-pointer bg-none border-none p-0 text-left"
+              >
+                Главная
+              </button>
+            </li>
             <li>О нас</li>
-            <li>Блог</li>
-            <li>Архив</li>
-            <li>Авторы</li>
+            <li>
+              <button
+                onClick={handleMyBlogClick}
+                className="hover:text-[#4B6BFB] transition-colors cursor-pointer bg-none border-none p-0 text-left"
+              >
+                Мой блог
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={handleAuthorsClick}
+                className="hover:text-[#4B6BFB] transition-colors cursor-pointer bg-none border-none p-0 text-left"
+              >
+                Авторы
+              </button>
+            </li>
             <li>Контакты</li>
           </ul>
         </div>
