@@ -22,8 +22,17 @@ const Footer = ({ isAuthenticated, username }) => {
     navigate("/authors");
     window.scrollTo(0, 0);
   };
+
+  const handleAboutClick = () => {
+    navigate("/about");
+    window.scrollTo(0, 0);
+  };
+
+  const handleContactsClick = () => {
+    navigate("/about?scrollToFooter=true");
+  };
   return (
-    <footer className="bg-[#F6F6F7] padding-x py-16 max-container dark:bg-[#141624]">
+    <footer id="footer" className="bg-[#F6F6F7] padding-x py-16 max-container dark:bg-[#141624]">
     <div className="flex max-lg:gap-9 lg:gap-20 flex-wrap max-md:justify-center justify-start items-start">
       <div className="w-[300px] flex flex-col gap-6 max-md:items-center">
         <button
@@ -39,9 +48,12 @@ const Footer = ({ isAuthenticated, username }) => {
  открывайте для себя новые взгляды и истории от других авторов.
         </p>
 
-        <p className="text-[14px] text-[#4B6BFB] dark:text-[#4B6BFB]">
+        <button
+          onClick={handleContactsClick}
+          className="text-[14px] text-[#4B6BFB] dark:text-[#4B6BFB] hover:text-[#3D53D6] transition-colors bg-none border-none p-0 text-left cursor-pointer"
+        >
           DevFolioBlog@gmail.com
-        </p>
+        </button>
       </div>
 
       <div className="flex gap-16 ml-24 flex-1">
@@ -58,7 +70,14 @@ const Footer = ({ isAuthenticated, username }) => {
                 Главная
               </button>
             </li>
-            <li>О нас</li>
+            <li>
+              <button
+                onClick={handleAboutClick}
+                className="hover:text-[#4B6BFB] transition-colors cursor-pointer bg-none border-none p-0 text-left"
+              >
+                О нас
+              </button>
+            </li>
             <li>
               <button
                 onClick={handleMyBlogClick}
@@ -75,7 +94,14 @@ const Footer = ({ isAuthenticated, username }) => {
                 Авторы
               </button>
             </li>
-            <li>Контакты</li>
+            <li>
+              <button
+                onClick={handleContactsClick}
+                className="hover:text-[#4B6BFB] transition-colors cursor-pointer bg-none border-none p-0 text-left"
+              >
+                Контакты
+              </button>
+            </li>
           </ul>
         </div>
 
@@ -93,7 +119,7 @@ const Footer = ({ isAuthenticated, username }) => {
         </div>
 
         <div className="flex justify-end items-start -mt-16 ml-3">
-          <img src="/images/coding-developers-logo.png" alt="Coding Developers" className="h-140 w-[512px]" />
+          <img src="/images/coding-developers-logo.png" alt="Coding Developers" className="h-140 w-[512px] invert dark:invert-0" />
         </div>
       </div>
     </div>

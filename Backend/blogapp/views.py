@@ -149,6 +149,32 @@ def get_userinfo(request, username):
     return Response(serializer.data)
 
 
+@api_view(['GET'])
+def get_users_count(request):
+    User = get_user_model()
+    users_count = User.objects.count()
+    return Response({"count": users_count})
+
+
+@api_view(['GET'])
+def get_active_users_count(request):
+    from django.contrib.sessions.models import Session
+    from django.utils import timezone
+    import json
+    
+    # Получаем все активные сессии
+    active_sessions = Session.objects.filter(expire_date__gte=timezone.now())
+    
+    # Считаем уникальных авторизованных пользователей
+    active_users = set()
+    for session in active_sessions:
+        session_data = session.get_decoded()
+        if '_auth_user_id' in session_data:
+            active_users.add(int(session_data['_auth_user_id']))
+    
+    return Response({"count": len(active_users)})
+
+
 @api_view(["GET"])
 def get_user(request, email):
     User = get_user_model()

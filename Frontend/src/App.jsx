@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./ui_components/ProtectedRoute";
 import ProfilePage from "./pages/ProfilePage";
 import AuthorsPage from "./pages/AuthorsPage";
+import AboutPage from "./pages/AboutPage";
 import { useEffect, useState } from "react";
 import { getUsername } from "./services/apiBlog";
 import { useQuery } from "@tanstack/react-query";
@@ -52,6 +53,7 @@ const App = () => {
           <Route index element={<HomePage />} />
           <Route path="*" element={<NotFoundPage />} />
           <Route path="authors" element={<AuthorsPage />} />
+          <Route path="about" element={<AboutPage />} />
           <Route path="profile/:username" element={<ProfilePage authUsername={username} />} />
           <Route path="blogs/:slug" element={<DetailPage username={username} isAuthenticated={isAuthenticated} />} />
           <Route path="signup" element={<SignupPage />} />

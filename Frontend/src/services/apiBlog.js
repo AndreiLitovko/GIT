@@ -132,3 +132,21 @@ export async function updateProfile(data) {
     throw new Error(err.message);
   }
 }
+
+export async function getUsersCount() {
+  try {
+    const response = await api.get("users_count/");
+    return response.data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
+export async function getActiveUsersCount() {
+  try {
+    const response = await api.get("active_users_count/");
+    return response.data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}

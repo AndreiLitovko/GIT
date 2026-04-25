@@ -13,5 +13,7 @@ urlpatterns = [
     path("get_username", views.get_username, name="get_username"),
     path("get_userinfo/<str:username>", views.get_userinfo, name="get_userinfo"),
     path("get_user/<str:email>", views.get_user, name="get_user"),
-    path("authors/", views.get_authors, name="get_authors")
+    path("authors/", views.get_authors, name="get_authors"),
+    path("users_count/", views.get_users_count, name="get_users_count"),
+    path("active_users_count/", views.get_active_users_count, name="get_active_users_count")
 ]
