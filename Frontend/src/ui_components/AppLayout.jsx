@@ -35,7 +35,7 @@ const AppLayout = ({ isAuthenticated, username, setIsAuthenticated, setUsername 
         />
         <ToastContainer />
         <Outlet />
-        <Footer />
+        <Footer isAuthenticated={isAuthenticated} username={username} />
       </main>
     </div>
   );

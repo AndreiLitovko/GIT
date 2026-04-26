@@ -1,8 +1,14 @@
 import api from "@/api";
 
-export async function getBlogs(page) {
+export async function getBlogs(page, category = "") {
   try {
-    const response = await api.get(`blog_list?page=${page}`);
+    const params = new URLSearchParams({ page: String(page) });
+
+    if (category) {
+      params.set("category", category);
+    }
+
+    const response = await api.get(`blog_list?${params.toString()}`);
     return response.data;
   } catch (err) {
     throw new Error(err.message);
@@ -93,6 +99,15 @@ export async function deleteBlog(id) {
   }
 }
 
+export async function getAuthors() {
+  try {
+    const response = await api.get("authors/");
+    return response.data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
 export async function getUserInfo(username) {
   try {
     const response = await api.get(`get_userinfo/${username}`);
@@ -114,6 +129,24 @@ export async function updateProfile(data) {
       );
     }
 
+    throw new Error(err.message);
+  }
+}
+
+export async function getUsersCount() {
+  try {
+    const response = await api.get("users_count/");
+    return response.data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
+export async function getActiveUsersCount() {
+  try {
+    const response = await api.get("active_users_count/");
+    return response.data;
+  } catch (err) {
     throw new Error(err.message);
   }
 }

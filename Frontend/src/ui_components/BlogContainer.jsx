@@ -23,8 +23,11 @@ const BlogContainer = ({
     </h2>
 
     <div className="flex items-center gap-6 justify-center flex-wrap">
-      {blogs.map((blog) => <BlogCard key={blog.id} blog={blog} />)}
-      
+      {blogs.length > 0 ? (
+        blogs.map((blog) => <BlogCard key={blog.id} blog={blog} />)
+      ) : (
+        <p className="dark:text-white text-center">Посты по этой категории пока не найдены.</p>
+      )}
     </div>
   </section>
   )

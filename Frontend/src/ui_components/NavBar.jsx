@@ -2,7 +2,7 @@ import { Switch } from "@/components/ui/switch";
 import { FaHamburger } from "react-icons/fa";
 import ResponsiveNavBar from "./ResponsiveNavBar";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 
 const NavBar = ({
   darkMode,
@@ -13,12 +13,26 @@ const NavBar = ({
   setUsername,
 }) => {
   const [showNavBar, setShowNavBar] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   function logout() {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
     setIsAuthenticated(false);
     setUsername(null);
+  }
+
+  function handleContactsClick() {
+    if (location.pathname === "/about") {
+      // Already on About page, scroll to footer directly
+      setTimeout(() => {
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+      }, 100);
+    } else {
+      // Navigate to About page with scroll parameter
+      navigate("/about?scrollToFooter=true");
+    }
   }
 
   return (
@@ -34,8 +48,27 @@ const NavBar = ({
                   to={`/profile/${username}`}
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
-                  Привет, {username}!
+                  Привет, {username} !
                 </NavLink></li>
+
+              <li>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  О нас
+                </NavLink>
+              </li>
+
+              <li className="cursor-pointer">
+                <button
+                  onClick={handleContactsClick}
+                  className="bg-none border-none p-0 text-left cursor-pointer"
+                >
+                  Контакты
+                </button>
+              </li>
+
               <li onClick={logout} className="cursor-pointer">
                 Выход
               </li>
