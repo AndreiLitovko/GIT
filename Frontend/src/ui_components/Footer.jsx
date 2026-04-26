@@ -50,7 +50,7 @@ const Footer = ({ isAuthenticated, username }) => {
 
         <button
           onClick={handleContactsClick}
-          className="text-[14px] text-[#4B6BFB] dark:text-[#4B6BFB] hover:text-[#3D53D6] transition-colors bg-none border-none p-0 text-left cursor-pointer"
+          className="text-[14px] text-[#141624] dark:text-[#FFFFFF] hover:text-[#4B6BFB] dark:hover:text-[#4B6BFB] transition-colors bg-none border-none p-0 text-left cursor-pointer font-bold"
         >
           DevFolioBlog@gmail.com
         </button>

@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import SmallSpinner from "@/ui_components/SmallSpinner";
 import SmallSpinnerText from "@/ui_components/SmallSpinnerText";
 import LoginPage from "./LoginPage";
+import { FaTimes } from "react-icons/fa";
 
 const CreatePostPage = ({ blog, isAuthenticated }) => {
   const { register, handleSubmit, formState, setValue, setError, clearErrors } = useForm({
@@ -29,6 +30,10 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
   const queryClient = useQueryClient();
 
   const blogID = blog?.id;
+
+  const handleClose = () => {
+    navigate(-1);
+  };
 
   const updateMutation = useMutation({
     mutationFn: ({ data, id }) => updateBlog(data, id),
@@ -88,8 +93,16 @@ const CreatePostPage = ({ blog, isAuthenticated }) => {
       onSubmit={handleSubmit(onSubmit)}
       className={`${
         blog && "h-[90%] overflow-auto"
-      }  md:px-16 px-8 py-6 flex flex-col mx-auto my-9 items-center gap-6 w-fit rounded-lg bg-[#FFFFFF] shadow-xl dark:text-white dark:bg-[#141624]`}
+      } relative md:px-16 px-8 py-6 flex flex-col mx-auto my-9 items-center gap-6 w-fit rounded-lg bg-[#FFFFFF] shadow-xl dark:text-white dark:bg-[#141624]`}
     >
+      <button
+        type="button"
+        onClick={handleClose}
+        className="absolute top-4 right-4 text-[#3B3C4A] dark:text-[#97989F] hover:text-[#141624] dark:hover:text-[#FFFFFF] text-2xl bg-none border-none p-0 cursor-pointer transition-colors"
+      >
+        <FaTimes />
+      </button>
+
       <div className="flex flex-col gap-2 justify-center items-center mb-2">
         <h3 className="font-semibold text-2xl max-sm:text-xl">
           {blog ? "Обновить пост" : "Создать пост"}
